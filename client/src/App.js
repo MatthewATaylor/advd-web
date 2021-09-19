@@ -16,6 +16,7 @@ function App() {
   const [mode, setMode] = React.useState(0);
   const [locX, setLocX] = React.useState(0);
   const [locY, setLocY] = React.useState(0);
+  const [isTracked, setIsTracked] = React.useState(false);
 
   /*
   React.useEffect(() => {
@@ -41,18 +42,13 @@ function App() {
     }
 
     if (latitude !== null && longitude !== null) {
-      console.log(longitude);
-      let xPos = (-longitude - 65) / 65.0;
-      console.log(xPos * 100);
+      let xPos = -1 * (-longitude - 130) / 65.0;
       setLocX(xPos * 100);
 
-      console.log(latitude);
       let yPos = (latitude - 25) / 25.0;
       setLocY(yPos * 100);
-      console.log(yPos);
-    }
-    else {
-      console.log("Failed to access geolocation");
+
+      setIsTracked(true);
     }
   }
 
@@ -94,11 +90,11 @@ function App() {
         </tbody>
       </table>
       <div id="bg-window">
-        <h1 id="title">&lt;advd/&gt;</h1>
+        <h1 id="title">&lt;advantaged/&gt;</h1>
       </div>
       <div className="centered">
         <div id="img-wrapper">
-          <div id="loc-point" style={{right: locX.toString() + "%", bottom: locY.toString() + "%"}}></div>
+          <div id="loc-point" className={isTracked ? "" : "hidden"} style={{left: locX.toString() + "%", bottom: locY.toString() + "%"}}></div>
           <img id="map-img" src={MapImage} alt="map" />
         </div>
       </div>

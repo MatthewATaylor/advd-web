@@ -103,10 +103,14 @@ p {
 	height: 10px;
 }
 
+#loc-point.hidden {
+	display: none;
+}
+
 #title {
 	position: absolute;
 	left: 30px;
-	top: 30px;
+	top: 15px;
 	font-size: 50px;
 	margin: 0;
 	padding: 0;
